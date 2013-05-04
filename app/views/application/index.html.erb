@@ -1,0 +1,24 @@
+<h1>AWS Whitepaper Tracker</h1>
+
+<table class="whitepapers"></table>
+
+<script type='text/template' id="whitepaperTemplate">
+	<tr><td>{{= title }}</td></tr>
+</script>
+
+<script type="text/javascript">
+  $(function() {
+        
+    window.whitepapers = new AwsWhitepapersTracker.Models.Whitepapers(<%= @whitepapers %>);
+    window.whitepapers.url = "/whitepapers.json";
+    window.whitepapers.fetch({
+    	success:function(){
+    		_.each(window.whitepapers.models, function(whitepaper){
+    			//view = new AwsWhitepapersTracker.Views.ModelView({ model: whitepaper });
+    			//$(".whitepapers").append( view.render() );	
+    		});
+    		
+    	}
+    })
+  });
+</script>
